@@ -1,0 +1,23 @@
+# Secrets / credentials — NEVER commit these
+*.pem
+*.key
+*.crt
+.env
+.env.*
+secrets/
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*~
+
+# Node / build output (if you later compile Tailwind)
+node_modules/
+dist/
+*.log

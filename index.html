@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary Meta Tags -->
+  <title>Yolotech88 | Data Engineering, Analytics &amp; Cloud Solutions</title>
+  <meta name="title" content="Yolotech88 | Data Engineering, Analytics & Cloud Solutions" />
+  <meta name="description" content="Yolotech88 helps organizations build modern data platforms, analytics systems and scalable cloud-native applications. We deliver Data Engineering, Analytics and Cloud expertise — and build products like Vendora88." />
+  <meta name="keywords" content="Data Engineering, Data Analytics, Cloud Data Platforms, AWS, Snowflake, Redshift, Kafka, Airflow, Power BI, Data Team Augmentation, Vendora88, Yolotech88" />
+  <meta name="author" content="Yolotech88" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.yolotech88.com/" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.yolotech88.com/" />
+  <meta property="og:title" content="Yolotech88 | Data Engineering, Analytics & Cloud Solutions" />
+  <meta property="og:description" content="Modern data platforms, analytics systems and scalable cloud-native applications. Engineering the foundations of data-driven business." />
+  <meta property="og:image" content="https://www.yolotech88.com/assets/og-image.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Yolotech88 | Data Engineering, Analytics & Cloud Solutions" />
+  <meta name="twitter:description" content="Modern data platforms, analytics systems and scalable cloud-native applications." />
+  <meta name="twitter:image" content="https://www.yolotech88.com/assets/og-image.png" />
+
+  <meta name="theme-color" content="#1d4ed8" />
+
+  <!-- Favicon (inline SVG) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231d4ed8'/%3E%3Ctext x='16' y='22' font-family='Arial,sans-serif' font-size='16' font-weight='700' fill='white' text-anchor='middle'%3EY%3C/text%3E%3C/svg%3E" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS (Play CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe', 300: '#93c5fd',
+              400: '#60a5fa', 500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8',
+              800: '#1e40af', 900: '#1e3a8a', 950: '#172554',
+            },
+            ink: '#0b1220',
+          },
+          boxShadow: {
+            soft: '0 1px 3px rgba(15,23,42,.06), 0 12px 32px -12px rgba(15,23,42,.12)',
+            lift: '0 20px 50px -20px rgba(29,78,216,.35)',
+          },
+          keyframes: {
+            floaty: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-14px)' } },
+          },
+          animation: { floaty: 'floaty 7s ease-in-out infinite' },
+        },
+      },
+    };
+  </script>
+
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- Structured Data (SEO) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Yolotech88",
+    "url": "https://www.yolotech88.com",
+    "logo": "https://www.yolotech88.com/assets/logo.png",
+    "description": "Data Engineering, Analytics and Cloud Solutions company building modern data platforms and cloud-native applications.",
+    "sameAs": ["https://www.linkedin.com/company/yolotech88"],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "info@yolotech88.com",
+      "contactType": "sales"
+    },
+    "makesOffer": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Data Engineering" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Data Analytics" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cloud Data Platforms" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Data Team Augmentation" } },
+      { "@type": "Offer", "itemOffered": { "@type": "SoftwareApplication", "name": "Vendora88", "applicationCategory": "BusinessApplication", "url": "https://vendora88.com", "description": "Multi-vendor marketplace platform built and operated by Yolotech88." } }
+    ]
+  }
+  </script>
+</head>
+
+<body class="font-sans text-slate-700 antialiased bg-white">
+
+  <!-- Skip link (a11y) -->
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-3 focus:left-3 focus:bg-brand-700 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg">Skip to content</a>
+
+  <!-- ============ HEADER / NAV ============ -->
+  <header id="site-header" class="fixed inset-x-0 top-0 z-50 transition-all duration-300">
+    <nav class="mx-auto max-w-7xl px-5 sm:px-8" aria-label="Primary">
+      <div class="flex h-16 items-center justify-between md:h-20">
+        <!-- Logo -->
+        <a href="#hero" class="flex items-center gap-2.5 group" aria-label="Yolotech88 home">
+          <span class="grid h-9 w-9 place-items-center rounded-xl bg-brand-700 text-white font-display font-extrabold shadow-lift transition-transform group-hover:scale-105">Y</span>
+          <span class="font-display text-xl font-extrabold tracking-tight text-ink">Yolotech<span class="text-brand-700">88</span></span>
+        </a>
+
+        <!-- Desktop links -->
+        <ul class="hidden items-center gap-8 md:flex">
+          <li><a class="nav-link" href="#about">About</a></li>
+          <li><a class="nav-link" href="#services">Services</a></li>
+          <li><a class="nav-link" href="#technologies">Technologies</a></li>
+          <li><a class="nav-link" href="#why">Why Us</a></li>
+          <li><a class="nav-link" href="#products">Products</a></li>
+        </ul>
+
+        <div class="hidden md:block">
+          <a href="#contact" class="btn-primary">Get in touch</a>
+        </div>
+
+        <!-- Mobile toggle -->
+        <button id="menu-toggle" class="inline-flex items-center justify-center rounded-lg p-2 text-ink md:hidden" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation menu">
+          <svg id="icon-open" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg id="icon-close" class="hidden h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden border-t border-slate-100 bg-white/95 backdrop-blur md:hidden">
+      <ul class="space-y-1 px-5 py-4">
+        <li><a class="mobile-link" href="#about">About</a></li>
+        <li><a class="mobile-link" href="#services">Services</a></li>
+        <li><a class="mobile-link" href="#technologies">Technologies</a></li>
+        <li><a class="mobile-link" href="#why">Why Us</a></li>
+        <li><a class="mobile-link" href="#products">Products</a></li>
+        <li class="pt-2"><a href="#contact" class="btn-primary w-full justify-center">Get in touch</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ HERO ============ -->
+    <section id="hero" class="relative overflow-hidden pt-32 pb-20 md:pt-44 md:pb-28">
+      <!-- Background decoration -->
+      <div class="pointer-events-none absolute inset-0 -z-10">
+        <div class="absolute inset-0 bg-gradient-to-b from-brand-50/70 via-white to-white"></div>
+        <div class="hero-grid absolute inset-0 opacity-[.5]"></div>
+        <div class="absolute -top-24 right-[-10%] h-[28rem] w-[28rem] rounded-full bg-brand-200/40 blur-3xl"></div>
+        <div class="absolute top-40 left-[-12%] h-80 w-80 rounded-full bg-brand-100/60 blur-3xl"></div>
+      </div>
+
+      <div class="mx-auto grid max-w-7xl items-center gap-14 px-5 sm:px-8 lg:grid-cols-12">
+        <div class="lg:col-span-7" data-reveal>
+          <span class="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-white px-4 py-1.5 text-sm font-semibold text-brand-700 shadow-soft">
+            <span class="h-2 w-2 rounded-full bg-brand-600 animate-pulse"></span>
+            Data Engineering · Analytics · Cloud
+          </span>
+
+          <h1 class="mt-6 font-display text-4xl font-extrabold leading-[1.08] tracking-tight text-ink sm:text-5xl lg:text-6xl">
+            Engineering the foundations of
+            <span class="text-gradient">data-driven business</span>
+          </h1>
+
+          <p class="mt-6 max-w-xl text-lg leading-relaxed text-slate-600">
+            Yolotech88 helps organizations build modern data platforms, analytics systems and
+            scalable cloud-native applications — turning raw data into reliable, real-time advantage.
+          </p>
+
+          <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+            <a href="#contact" class="btn-primary">Start a conversation
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 12h15"/></svg>
+            </a>
+            <a href="#services" class="btn-ghost">Explore services</a>
+          </div>
+
+          <!-- Stats -->
+          <dl class="mt-12 grid max-w-lg grid-cols-3 gap-6">
+            <div data-counter="50" data-suffix="+">
+              <dd class="counter font-display text-3xl font-extrabold text-ink">0+</dd>
+              <dt class="mt-1 text-sm text-slate-500">Data pipelines shipped</dt>
+            </div>
+            <div data-counter="99" data-suffix="%">
+              <dd class="counter font-display text-3xl font-extrabold text-ink">0%</dd>
+              <dt class="mt-1 text-sm text-slate-500">Pipeline reliability</dt>
+            </div>
+            <div data-counter="7" data-suffix="+">
+              <dd class="counter font-display text-3xl font-extrabold text-ink">0+</dd>
+              <dt class="mt-1 text-sm text-slate-500">Cloud &amp; data tools</dt>
+            </div>
+          </dl>
+        </div>
+
+        <!-- Hero visual -->
+        <div class="lg:col-span-5" data-reveal>
+          <div class="relative mx-auto max-w-md">
+            <div class="animate-floaty rounded-3xl border border-slate-100 bg-white p-6 shadow-soft">
+              <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+                <div class="flex items-center gap-2">
+                  <span class="h-3 w-3 rounded-full bg-brand-600"></span>
+                  <span class="text-sm font-semibold text-ink">Data Platform</span>
+                </div>
+                <span class="rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-600">Healthy</span>
+              </div>
+
+              <!-- mini bar chart -->
+              <div class="mt-5 flex h-32 items-end gap-2.5">
+                <span class="bar" style="height:45%"></span>
+                <span class="bar" style="height:70%"></span>
+                <span class="bar" style="height:38%"></span>
+                <span class="bar" style="height:85%"></span>
+                <span class="bar" style="height:60%"></span>
+                <span class="bar" style="height:95%"></span>
+                <span class="bar" style="height:52%"></span>
+                <span class="bar" style="height:78%"></span>
+              </div>
+
+              <div class="mt-5 grid grid-cols-2 gap-3">
+                <div class="rounded-xl bg-brand-50 p-3">
+                  <p class="text-xs text-slate-500">Throughput</p>
+                  <p class="font-display text-lg font-bold text-brand-800">1.2M / s</p>
+                </div>
+                <div class="rounded-xl bg-slate-50 p-3">
+                  <p class="text-xs text-slate-500">Latency</p>
+                  <p class="font-display text-lg font-bold text-ink">42 ms</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- floating badge -->
+            <div class="absolute -bottom-5 -left-5 hidden rounded-2xl border border-slate-100 bg-white px-4 py-3 shadow-lift sm:block">
+              <div class="flex items-center gap-3">
+                <span class="grid h-9 w-9 place-items-center rounded-lg bg-brand-700 text-white">
+                  <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                </span>
+                <div>
+                  <p class="text-xs text-slate-500">Pipeline status</p>
+                  <p class="text-sm font-bold text-ink">All systems go</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trust strip -->
+      <div class="mx-auto mt-20 max-w-7xl px-5 sm:px-8" data-reveal>
+        <p class="text-center text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">Built on the modern data stack</p>
+        <div class="mt-6 flex flex-wrap items-center justify-center gap-x-10 gap-y-4 text-lg font-semibold text-slate-400">
+          <span>AWS</span><span>Snowflake</span><span>Redshift</span><span>PostgreSQL</span><span>Kafka</span><span>Airflow</span><span>Power BI</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section id="about" class="py-20 md:py-28">
+      <div class="mx-auto grid max-w-7xl items-center gap-14 px-5 sm:px-8 lg:grid-cols-2">
+        <div data-reveal>
+          <span class="eyebrow">About Us</span>
+          <h2 class="section-title mt-3">We build the data backbone modern businesses run on</h2>
+          <p class="mt-6 text-lg leading-relaxed text-slate-600">
+            Yolotech88 is a Data Engineering, Analytics and Cloud Solutions company. We partner with
+            organizations to design and operate modern data platforms, analytics systems and
+            scalable cloud-native applications.
+          </p>
+          <p class="mt-4 leading-relaxed text-slate-600">
+            Beyond consulting, we develop and operate our own software products — including
+            <strong class="font-semibold text-ink">Vendora88</strong>, a multi-vendor marketplace
+            platform. That product mindset means we don't just advise; we build, ship and run
+            systems at scale, every day.
+          </p>
+
+          <ul class="mt-8 grid gap-4 sm:grid-cols-2">
+            <li class="flex items-start gap-3">
+              <span class="check-dot"></span>
+              <span><strong class="font-semibold text-ink">Engineering-first</strong><br/><span class="text-sm text-slate-500">Production systems, not slideware</span></span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="check-dot"></span>
+              <span><strong class="font-semibold text-ink">Cloud-native</strong><br/><span class="text-sm text-slate-500">Scalable, secure, cost-aware</span></span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="check-dot"></span>
+              <span><strong class="font-semibold text-ink">Analytics that ship</strong><br/><span class="text-sm text-slate-500">From raw data to decisions</span></span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="check-dot"></span>
+              <span><strong class="font-semibold text-ink">Product DNA</strong><br/><span class="text-sm text-slate-500">We operate our own platforms</span></span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="relative" data-reveal>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="rounded-2xl border border-slate-100 bg-gradient-to-br from-brand-700 to-brand-900 p-6 text-white shadow-lift">
+              <p class="font-display text-4xl font-extrabold">Modern</p>
+              <p class="mt-2 text-sm text-brand-100">data platforms designed for scale and reliability</p>
+            </div>
+            <div class="mt-8 rounded-2xl border border-slate-100 bg-white p-6 shadow-soft">
+              <p class="font-display text-4xl font-extrabold text-ink">Cloud</p>
+              <p class="mt-2 text-sm text-slate-500">native architectures on AWS &amp; beyond</p>
+            </div>
+            <div class="rounded-2xl border border-slate-100 bg-white p-6 shadow-soft">
+              <p class="font-display text-4xl font-extrabold text-ink">Real-time</p>
+              <p class="mt-2 text-sm text-slate-500">streaming &amp; batch, unified</p>
+            </div>
+            <div class="-mt-2 rounded-2xl border border-slate-100 bg-brand-50 p-6 shadow-soft">
+              <p class="font-display text-4xl font-extrabold text-brand-800">Trusted</p>
+              <p class="mt-2 text-sm text-slate-600">governed, observable data you can rely on</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVICES ============ -->
+    <section id="services" class="bg-slate-50/70 py-20 md:py-28">
+      <div class="mx-auto max-w-7xl px-5 sm:px-8">
+        <div class="mx-auto max-w-2xl text-center" data-reveal>
+          <span class="eyebrow">Services</span>
+          <h2 class="section-title mt-3">What we do</h2>
+          <p class="mt-5 text-lg text-slate-600">End-to-end capabilities across the modern data lifecycle — from ingestion to insight to scale.</p>
+        </div>
+
+        <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <!-- Data Engineering -->
+          <article class="service-card" data-reveal>
+            <div class="service-icon">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7c0-1.66 3.58-3 8-3s8 1.34 8 3-3.58 3-8 3-8-1.34-8-3Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M4 7v5c0 1.66 3.58 3 8 3s8-1.34 8-3V7M4 12v5c0 1.66 3.58 3 8 3s8-1.34 8-3v-5"/></svg>
+            </div>
+            <h3 class="service-heading">Data Engineering</h3>
+            <p class="service-text">Robust, observable batch and streaming pipelines that move and transform data reliably at scale.</p>
+            <ul class="service-list">
+              <li>ETL / ELT pipelines</li>
+              <li>Streaming &amp; CDC</li>
+              <li>Data modeling &amp; quality</li>
+            </ul>
+          </article>
+
+          <!-- Data Analytics -->
+          <article class="service-card" data-reveal>
+            <div class="service-icon">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 19V5M4 19h16M8 16v-5M12 16V8M16 16v-3M20 16V6"/></svg>
+            </div>
+            <h3 class="service-heading">Data Analytics</h3>
+            <p class="service-text">Dashboards, metrics and self-serve analytics that turn data into confident decisions.</p>
+            <ul class="service-list">
+              <li>BI &amp; dashboards</li>
+              <li>Metrics &amp; KPIs</li>
+              <li>Self-serve analytics</li>
+            </ul>
+          </article>
+
+          <!-- Cloud Data Platforms -->
+          <article class="service-card" data-reveal>
+            <div class="service-icon">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 18a4 4 0 0 1-.5-7.97A5.5 5.5 0 0 1 17 9.5a3.5 3.5 0 0 1 .5 6.96"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 13v6m0 0-2.5-2.5M12 19l2.5-2.5"/></svg>
+            </div>
+            <h3 class="service-heading">Cloud Data Platforms</h3>
+            <p class="service-text">Secure, scalable, cost-aware platforms — lakehouse and warehouse architectures done right.</p>
+            <ul class="service-list">
+              <li>Lakehouse &amp; warehouse</li>
+              <li>Governance &amp; security</li>
+              <li>Cost &amp; performance</li>
+            </ul>
+          </article>
+
+          <!-- Data Team Augmentation -->
+          <article class="service-card" data-reveal>
+            <div class="service-icon">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 14a4 4 0 1 0-4-4M8 21v-1a4 4 0 0 1 4-4h0a4 4 0 0 1 4 4v1M6 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/></svg>
+            </div>
+            <h3 class="service-heading">Data Team Augmentation</h3>
+            <p class="service-text">Senior data engineers and analysts who embed with your team and ship from day one.</p>
+            <ul class="service-list">
+              <li>Embedded experts</li>
+              <li>Flexible scaling</li>
+              <li>Knowledge transfer</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TECHNOLOGIES ============ -->
+    <section id="technologies" class="py-20 md:py-28">
+      <div class="mx-auto max-w-7xl px-5 sm:px-8">
+        <div class="mx-auto max-w-2xl text-center" data-reveal>
+          <span class="eyebrow">Technologies</span>
+          <h2 class="section-title mt-3">The modern data stack we master</h2>
+          <p class="mt-5 text-lg text-slate-600">We work with best-in-class tools to build platforms that are fast, reliable and future-proof.</p>
+        </div>
+
+        <div class="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-7" data-reveal>
+          <!-- tech tiles -->
+          <div class="tech-tile"><span class="tech-badge">AWS</span><p>Cloud Infrastructure</p></div>
+          <div class="tech-tile"><span class="tech-badge">❄</span><p>Snowflake</p></div>
+          <div class="tech-tile"><span class="tech-badge">RS</span><p>Redshift</p></div>
+          <div class="tech-tile"><span class="tech-badge">PG</span><p>PostgreSQL</p></div>
+          <div class="tech-tile"><span class="tech-badge">⚡</span><p>Kafka</p></div>
+          <div class="tech-tile"><span class="tech-badge">✈</span><p>Airflow</p></div>
+          <div class="tech-tile"><span class="tech-badge">BI</span><p>Power BI</p></div>
+        </div>
+
+        <div class="mt-10 grid gap-4 sm:grid-cols-3" data-reveal>
+          <div class="rounded-2xl border border-slate-100 bg-slate-50/70 p-6">
+            <h3 class="font-display font-bold text-ink">Ingest &amp; Stream</h3>
+            <p class="mt-2 text-sm text-slate-500">Kafka &amp; CDC for real-time, event-driven data movement.</p>
+          </div>
+          <div class="rounded-2xl border border-slate-100 bg-slate-50/70 p-6">
+            <h3 class="font-display font-bold text-ink">Store &amp; Transform</h3>
+            <p class="mt-2 text-sm text-slate-500">Snowflake, Redshift &amp; PostgreSQL, orchestrated by Airflow.</p>
+          </div>
+          <div class="rounded-2xl border border-slate-100 bg-slate-50/70 p-6">
+            <h3 class="font-display font-bold text-ink">Analyze &amp; Visualize</h3>
+            <p class="mt-2 text-sm text-slate-500">Power BI dashboards on governed, trustworthy data.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WHY YOLOTECH88 ============ -->
+    <section id="why" class="relative overflow-hidden bg-ink py-20 text-white md:py-28">
+      <div class="pointer-events-none absolute inset-0 -z-10">
+        <div class="absolute -right-20 top-10 h-96 w-96 rounded-full bg-brand-600/20 blur-3xl"></div>
+        <div class="absolute -left-20 bottom-0 h-80 w-80 rounded-full bg-brand-500/10 blur-3xl"></div>
+      </div>
+      <div class="mx-auto max-w-7xl px-5 sm:px-8">
+        <div class="mx-auto max-w-2xl text-center" data-reveal>
+          <span class="eyebrow-light">Why Yolotech88</span>
+          <h2 class="section-title mt-3 text-white">A partner that builds — and operates</h2>
+          <p class="mt-5 text-lg text-slate-300">We bring the rigor of product engineering to every data and cloud engagement.</p>
+        </div>
+
+        <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div class="why-card" data-reveal>
+            <span class="why-num">01</span>
+            <h3 class="why-heading">Engineering excellence</h3>
+            <p class="why-text">Senior engineers who write production-grade, tested, observable systems — not prototypes.</p>
+          </div>
+          <div class="why-card" data-reveal>
+            <span class="why-num">02</span>
+            <h3 class="why-heading">Product mindset</h3>
+            <p class="why-text">We run our own platforms like Vendora88, so we understand uptime, scale and real users.</p>
+          </div>
+          <div class="why-card" data-reveal>
+            <span class="why-num">03</span>
+            <h3 class="why-heading">Cloud-native by default</h3>
+            <p class="why-text">Architectures designed for elasticity, security and cost efficiency from day one.</p>
+          </div>
+          <div class="why-card" data-reveal>
+            <span class="why-num">04</span>
+            <h3 class="why-heading">Outcome-focused</h3>
+            <p class="why-text">We measure success by the decisions and value your data unlocks, not lines of code.</p>
+          </div>
+          <div class="why-card" data-reveal>
+            <span class="why-num">05</span>
+            <h3 class="why-heading">Reliability you can trust</h3>
+            <p class="why-text">Governed, monitored, well-documented pipelines with reliability built in.</p>
+          </div>
+          <div class="why-card" data-reveal>
+            <span class="why-num">06</span>
+            <h3 class="why-heading">Flexible engagement</h3>
+            <p class="why-text">From full builds to embedded team augmentation — we scale to fit your needs.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PRODUCTS ============ -->
+    <section id="products" class="py-20 md:py-28">
+      <div class="mx-auto max-w-7xl px-5 sm:px-8">
+        <div class="mx-auto max-w-2xl text-center" data-reveal>
+          <span class="eyebrow">Products</span>
+          <h2 class="section-title mt-3">Software we build &amp; operate</h2>
+          <p class="mt-5 text-lg text-slate-600">We don't just consult — we develop and run our own platforms.</p>
+        </div>
+
+        <div class="mt-14 overflow-hidden rounded-3xl border border-slate-100 shadow-soft" data-reveal>
+          <div class="grid lg:grid-cols-2">
+            <!-- copy -->
+            <div class="p-8 sm:p-12">
+              <div class="flex items-center gap-3">
+                <span class="grid h-12 w-12 place-items-center rounded-2xl bg-brand-700 font-display text-xl font-extrabold text-white shadow-lift">V</span>
+                <div>
+                  <h3 class="font-display text-2xl font-extrabold text-ink">
+                    <a href="https://vendora88.com" target="_blank" rel="noopener" class="transition-colors hover:text-brand-700">Vendora88</a>
+                  </h3>
+                  <a href="https://vendora88.com" target="_blank" rel="noopener" class="text-sm font-medium text-brand-700 hover:underline">vendora88.com</a>
+                </div>
+              </div>
+
+              <p class="mt-6 leading-relaxed text-slate-600">
+                Vendora88 is a multi-vendor marketplace platform built and operated by Yolotech88.
+                It enables vendors to onboard, list products and sell — while giving operators
+                powerful tools for catalog, orders, payments and analytics at scale.
+              </p>
+
+              <ul class="mt-7 grid gap-3 sm:grid-cols-2">
+                <li class="product-feature">Multi-vendor onboarding</li>
+                <li class="product-feature">Catalog &amp; inventory</li>
+                <li class="product-feature">Orders &amp; payments</li>
+                <li class="product-feature">Seller analytics</li>
+                <li class="product-feature">Scalable cloud-native core</li>
+                <li class="product-feature">Real-time dashboards</li>
+              </ul>
+
+              <div class="mt-9 flex flex-wrap gap-3">
+                <a href="https://vendora88.com" target="_blank" rel="noopener" class="btn-primary">Visit Vendora88
+                  <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5h5v5M19 5l-9 9M10 5H6a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-4"/></svg>
+                </a>
+                <a href="#contact" class="btn-ghost">Request a demo</a>
+              </div>
+            </div>
+
+            <!-- visual -->
+            <div class="relative flex items-center justify-center bg-gradient-to-br from-brand-700 to-brand-900 p-8 sm:p-12">
+              <div class="w-full max-w-sm rounded-2xl bg-white/95 p-6 shadow-lift backdrop-blur">
+                <div class="flex items-center justify-between">
+                  <p class="font-display font-bold text-ink">Marketplace</p>
+                  <span class="rounded-full bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-700">Live</span>
+                </div>
+                <div class="mt-5 space-y-3">
+                  <div class="flex items-center justify-between rounded-xl bg-slate-50 p-3">
+                    <span class="text-sm font-medium text-slate-600">Active vendors</span>
+                    <span class="font-display font-bold text-ink">1,284</span>
+                  </div>
+                  <div class="flex items-center justify-between rounded-xl bg-slate-50 p-3">
+                    <span class="text-sm font-medium text-slate-600">Orders today</span>
+                    <span class="font-display font-bold text-ink">9,640</span>
+                  </div>
+                  <div class="flex items-center justify-between rounded-xl bg-brand-50 p-3">
+                    <span class="text-sm font-medium text-brand-700">GMV (24h)</span>
+                    <span class="font-display font-bold text-brand-800">$482K</span>
+                  </div>
+                </div>
+                <div class="mt-5 flex h-20 items-end gap-1.5">
+                  <span class="bar" style="height:40%"></span>
+                  <span class="bar" style="height:65%"></span>
+                  <span class="bar" style="height:55%"></span>
+                  <span class="bar" style="height:88%"></span>
+                  <span class="bar" style="height:72%"></span>
+                  <span class="bar" style="height:96%"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact" class="bg-slate-50/70 py-20 md:py-28">
+      <div class="mx-auto max-w-7xl px-5 sm:px-8">
+        <div class="grid gap-14 lg:grid-cols-2">
+          <div data-reveal>
+            <span class="eyebrow">Contact</span>
+            <h2 class="section-title mt-3">Let's build your data advantage</h2>
+            <p class="mt-5 text-lg text-slate-600">
+              Tell us about your data, analytics or cloud challenge. We'll get back within one
+              business day.
+            </p>
+
+            <div class="mt-9 space-y-5">
+              <a href="mailto:info@yolotech88.com" class="contact-row">
+                <span class="contact-icon">
+                  <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 7l9 6 9-6M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"/></svg>
+                </span>
+                <span><span class="block text-sm text-slate-500">Email us</span><span class="font-semibold text-ink">info@yolotech88.com</span></span>
+              </a>
+              <div class="contact-row">
+                <span class="contact-icon">
+                  <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21s-7-5.5-7-11a7 7 0 1 1 14 0c0 5.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+                </span>
+                <span><span class="block text-sm text-slate-500">Working globally</span><span class="font-semibold text-ink">Remote-first · Worldwide</span></span>
+              </div>
+              <div class="contact-row">
+                <span class="contact-icon">
+                  <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg>
+                </span>
+                <span><span class="block text-sm text-slate-500">Response time</span><span class="font-semibold text-ink">Within 1 business day</span></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Form -->
+          <div class="rounded-3xl border border-slate-100 bg-white p-7 shadow-soft sm:p-9" data-reveal>
+            <form id="contact-form" novalidate>
+              <div class="grid gap-5 sm:grid-cols-2">
+                <div>
+                  <label for="name" class="form-label">Full name</label>
+                  <input id="name" name="name" type="text" required autocomplete="name" class="form-input" placeholder="Jane Doe" />
+                  <p class="form-error" data-error-for="name"></p>
+                </div>
+                <div>
+                  <label for="email" class="form-label">Work email</label>
+                  <input id="email" name="email" type="email" required autocomplete="email" class="form-input" placeholder="jane@company.com" />
+                  <p class="form-error" data-error-for="email"></p>
+                </div>
+              </div>
+
+              <div class="mt-5 grid gap-5 sm:grid-cols-2">
+                <div>
+                  <label for="company" class="form-label">Company</label>
+                  <input id="company" name="company" type="text" autocomplete="organization" class="form-input" placeholder="Company Inc." />
+                </div>
+                <div>
+                  <label for="interest" class="form-label">I'm interested in</label>
+                  <select id="interest" name="interest" class="form-input">
+                    <option>Data Engineering</option>
+                    <option>Data Analytics</option>
+                    <option>Cloud Data Platforms</option>
+                    <option>Data Team Augmentation</option>
+                    <option>Vendora88 platform</option>
+                    <option>Something else</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="mt-5">
+                <label for="message" class="form-label">How can we help?</label>
+                <textarea id="message" name="message" rows="4" required class="form-input resize-none" placeholder="Tell us about your project, data sources, goals and timeline…"></textarea>
+                <p class="form-error" data-error-for="message"></p>
+              </div>
+
+              <button type="submit" class="btn-primary mt-6 w-full justify-center">Send message</button>
+              <p id="form-status" class="mt-4 hidden rounded-xl bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-700"></p>
+              <p class="mt-4 text-center text-xs text-slate-400">By submitting, you agree to be contacted about your enquiry.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="bg-ink text-slate-400">
+    <div class="mx-auto max-w-7xl px-5 py-16 sm:px-8">
+      <div class="grid gap-10 lg:grid-cols-12">
+        <div class="lg:col-span-4">
+          <a href="#hero" class="flex items-center gap-2.5">
+            <span class="grid h-9 w-9 place-items-center rounded-xl bg-brand-700 text-white font-display font-extrabold">Y</span>
+            <span class="font-display text-xl font-extrabold text-white">Yolotech<span class="text-brand-400">88</span></span>
+          </a>
+          <p class="mt-5 max-w-sm text-sm leading-relaxed">
+            Data Engineering, Analytics and Cloud Solutions. We build modern data platforms and
+            cloud-native products — including Vendora88.
+          </p>
+          <a href="mailto:info@yolotech88.com" class="mt-5 inline-block text-sm font-semibold text-brand-300 hover:text-brand-200">info@yolotech88.com</a>
+        </div>
+
+        <div class="lg:col-span-2">
+          <h3 class="footer-title">Services</h3>
+          <ul class="footer-list">
+            <li><a href="#services" class="footer-link">Data Engineering</a></li>
+            <li><a href="#services" class="footer-link">Data Analytics</a></li>
+            <li><a href="#services" class="footer-link">Cloud Data Platforms</a></li>
+            <li><a href="#services" class="footer-link">Team Augmentation</a></li>
+          </ul>
+        </div>
+
+        <div class="lg:col-span-2">
+          <h3 class="footer-title">Company</h3>
+          <ul class="footer-list">
+            <li><a href="#about" class="footer-link">About Us</a></li>
+            <li><a href="#why" class="footer-link">Why Yolotech88</a></li>
+            <li><a href="#products" class="footer-link">Products</a></li>
+            <li><a href="#contact" class="footer-link">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="lg:col-span-2">
+          <h3 class="footer-title">Products</h3>
+          <ul class="footer-list">
+            <li><a href="https://vendora88.com" target="_blank" rel="noopener" class="footer-link">Vendora88 ↗</a></li>
+          </ul>
+          <h3 class="footer-title mt-6">Stack</h3>
+          <ul class="footer-list">
+            <li>AWS · Snowflake</li>
+            <li>Kafka · Airflow</li>
+          </ul>
+        </div>
+
+        <div class="lg:col-span-2">
+          <h3 class="footer-title">Get started</h3>
+          <p class="mt-4 text-sm">Ready to modernize your data?</p>
+          <a href="#contact" class="btn-primary mt-4">Contact us</a>
+        </div>
+      </div>
+
+      <div class="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-sm sm:flex-row">
+        <p>&copy; <span id="year"></span> Yolotech88. All rights reserved.</p>
+        <div class="flex items-center gap-6">
+          <a href="#" class="footer-link">Privacy</a>
+          <a href="#" class="footer-link">Terms</a>
+          <a href="#hero" class="footer-link">Back to top ↑</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

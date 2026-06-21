@@ -1,0 +1,426 @@
+/* ============================================================
+   Yolotech88 — Custom styles
+   Layered on top of Tailwind (Play CDN). These are reusable
+   component classes + a few effects Tailwind utilities don't
+   cover cleanly inline.
+   ============================================================ */
+
+:root {
+  --brand-700: #1d4ed8;
+  --brand-600: #2563eb;
+}
+
+/* Smooth-scroll offset so anchored sections clear the fixed header */
+section[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+/* Respect users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ---------- Header states (toggled from JS) ---------- */
+#site-header {
+  background: transparent;
+}
+#site-header.scrolled {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  box-shadow: 0 1px 0 rgba(15, 23, 42, 0.06), 0 10px 30px -18px rgba(15, 23, 42, 0.25);
+}
+
+/* ---------- Nav links ---------- */
+.nav-link {
+  position: relative;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #334155;
+  transition: color 0.2s ease;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  height: 2px;
+  width: 0;
+  background: var(--brand-700);
+  border-radius: 2px;
+  transition: width 0.25s ease;
+}
+.nav-link:hover { color: var(--brand-700); }
+.nav-link:hover::after,
+.nav-link.is-active::after { width: 100%; }
+.nav-link.is-active { color: var(--brand-700); }
+
+.mobile-link {
+  display: block;
+  border-radius: 0.6rem;
+  padding: 0.7rem 0.75rem;
+  font-weight: 600;
+  color: #1e293b;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.mobile-link:hover { background: #eff6ff; color: var(--brand-700); }
+
+/* ---------- Buttons ---------- */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0.75rem;
+  background: var(--brand-700);
+  padding: 0.75rem 1.4rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  box-shadow: 0 12px 24px -12px rgba(29, 78, 216, 0.6);
+  transition: transform 0.15s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-primary:hover {
+  background: #1b44c4;
+  transform: translateY(-2px);
+  box-shadow: 0 18px 32px -14px rgba(29, 78, 216, 0.7);
+}
+.btn-primary:active { transform: translateY(0); }
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.75rem;
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  padding: 0.75rem 1.4rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1e293b;
+  transition: border-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+.btn-ghost:hover {
+  border-color: var(--brand-600);
+  color: var(--brand-700);
+  transform: translateY(-2px);
+}
+
+/* ---------- Typography helpers ---------- */
+.eyebrow {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--brand-700);
+}
+.eyebrow-light {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #93c5fd;
+}
+.section-title {
+  font-family: "Plus Jakarta Sans", Inter, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-size: clamp(1.75rem, 1.1rem + 2.5vw, 2.75rem);
+  line-height: 1.12;
+  color: #0b1220;
+}
+.text-gradient {
+  background: linear-gradient(120deg, #2563eb 0%, #1d4ed8 50%, #1e3a8a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* ---------- Hero decoration ---------- */
+.hero-grid {
+  background-image:
+    linear-gradient(to right, rgba(29, 78, 216, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(29, 78, 216, 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 75%);
+}
+
+/* Bars used in hero + product visuals */
+.bar {
+  flex: 1;
+  border-radius: 0.4rem 0.4rem 0.2rem 0.2rem;
+  background: linear-gradient(to top, #2563eb, #60a5fa);
+  transition: height 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ---------- About check dots ---------- */
+.check-dot {
+  margin-top: 0.35rem;
+  flex: none;
+  height: 1.1rem;
+  width: 1.1rem;
+  border-radius: 9999px;
+  background: var(--brand-700);
+  position: relative;
+}
+.check-dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 0.32rem;
+  height: 0.6rem;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: translateY(-1px) rotate(45deg);
+}
+
+/* ---------- Service cards ---------- */
+.service-card {
+  position: relative;
+  border-radius: 1.25rem;
+  border: 1px solid #e8edf5;
+  background: #fff;
+  padding: 1.75rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.service-card:hover {
+  transform: translateY(-6px);
+  border-color: #bfdbfe;
+  box-shadow: 0 24px 50px -24px rgba(29, 78, 216, 0.35);
+}
+.service-icon {
+  display: grid;
+  place-items: center;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 0.9rem;
+  background: #eff6ff;
+  color: var(--brand-700);
+  transition: background 0.25s ease, color 0.25s ease;
+}
+.service-card:hover .service-icon {
+  background: var(--brand-700);
+  color: #fff;
+}
+.service-heading {
+  margin-top: 1.25rem;
+  font-family: "Plus Jakarta Sans", Inter, sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: #0b1220;
+}
+.service-text {
+  margin-top: 0.6rem;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: #64748b;
+}
+.service-list {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #475569;
+}
+.service-list li {
+  position: relative;
+  padding-left: 1.1rem;
+}
+.service-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  height: 0.4rem;
+  width: 0.4rem;
+  border-radius: 9999px;
+  background: var(--brand-600);
+}
+
+/* ---------- Technology tiles ---------- */
+.tech-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  border-radius: 1rem;
+  border: 1px solid #e8edf5;
+  background: #fff;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.tech-tile:hover {
+  transform: translateY(-4px);
+  border-color: #bfdbfe;
+  box-shadow: 0 18px 40px -22px rgba(29, 78, 216, 0.4);
+}
+.tech-tile p {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #475569;
+}
+.tech-badge {
+  display: grid;
+  place-items: center;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 0.85rem;
+  background: linear-gradient(135deg, #eff6ff, #dbeafe);
+  color: var(--brand-700);
+  font-family: "Plus Jakarta Sans", Inter, sans-serif;
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+/* ---------- Why cards (dark) ---------- */
+.why-card {
+  position: relative;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 1.75rem;
+  transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+}
+.why-card:hover {
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(96, 165, 250, 0.45);
+}
+.why-num {
+  font-family: "Plus Jakarta Sans", Inter, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #60a5fa;
+}
+.why-heading {
+  margin-top: 0.75rem;
+  font-family: "Plus Jakarta Sans", Inter, sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #fff;
+}
+.why-text {
+  margin-top: 0.5rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: #94a3b8;
+}
+
+/* ---------- Product features ---------- */
+.product-feature {
+  position: relative;
+  padding-left: 1.6rem;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: #334155;
+}
+.product-feature::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.15rem;
+  height: 1.05rem;
+  width: 1.05rem;
+  border-radius: 9999px;
+  background: #eff6ff
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%231d4ed8' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 13l4 4L19 7'/%3E%3C/svg%3E")
+    center / 0.75rem no-repeat;
+}
+
+/* ---------- Contact ---------- */
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.contact-icon {
+  display: grid;
+  place-items: center;
+  height: 3rem;
+  width: 3rem;
+  flex: none;
+  border-radius: 0.9rem;
+  background: #eff6ff;
+  color: var(--brand-700);
+}
+.form-label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+.form-input {
+  width: 100%;
+  border-radius: 0.75rem;
+  border: 1px solid #d8e0ec;
+  background: #fff;
+  padding: 0.7rem 0.9rem;
+  font-size: 0.95rem;
+  color: #0b1220;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+.form-input::placeholder { color: #94a3b8; }
+.form-input:focus {
+  outline: none;
+  border-color: var(--brand-600);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+}
+.form-input.invalid {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1);
+}
+.form-error {
+  margin-top: 0.35rem;
+  min-height: 1rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #ef4444;
+}
+
+/* ---------- Footer ---------- */
+.footer-title {
+  font-family: "Plus Jakarta Sans", Inter, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #e2e8f0;
+}
+.footer-list {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+}
+.footer-link {
+  color: #94a3b8;
+  transition: color 0.18s ease;
+}
+.footer-link:hover { color: #fff; }
+
+/* ---------- Scroll reveal ---------- */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+[data-reveal].revealed {
+  opacity: 1;
+  transform: none;
+}
