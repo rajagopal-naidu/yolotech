@@ -166,7 +166,20 @@
       });
     });
 
-    form.addEventListener("submit", (e) => {
+    // Show a status message in success (green) or error (red) styling.
+    const SUCCESS_CLS =
+      "mt-4 rounded-xl bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-700";
+    const ERROR_CLS =
+      "mt-4 rounded-xl bg-red-50 px-4 py-3 text-sm font-medium text-red-700";
+    const showStatus = (msg, ok) => {
+      if (!status) return;
+      status.textContent = msg;
+      status.className = ok ? SUCCESS_CLS : ERROR_CLS;
+    };
+
+    const submitBtn = form.querySelector('button[type="submit"]');
+
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
       let valid = true;
 
@@ -184,13 +197,50 @@
         return;
       }
 
-      // Demo submission — no backend wired up.
-      const name = $("#name")?.value.trim().split(" ")[0] || "there";
-      if (status) {
-        status.textContent = `Thanks, ${name}! Your message has been received — we'll reply within one business day.`;
-        status.classList.remove("hidden");
+      const firstName = $("#name")?.value.trim().split(" ")[0] || "there";
+      const originalLabel = submitBtn?.textContent;
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Sending…";
       }
-      form.reset();
+
+      try {
+        const res = await fetch(form.action, {
+          method: "POST",
+          body: new FormData(form),
+          headers: { Accept: "application/json" },
+        });
+
+        if (res.ok) {
+          showStatus(
+            `Thanks, ${firstName}! Your message has been sent — we'll reply within one business day.`,
+            true
+          );
+          form.reset();
+        } else {
+          // Formspree returns { errors: [{ message }] } on validation/config issues
+          const data = await res.json().catch(() => ({}));
+          const detail =
+            data && Array.isArray(data.errors)
+              ? data.errors.map((x) => x.message).join(", ")
+              : "";
+          showStatus(
+            `Sorry, something went wrong${detail ? ` (${detail})` : ""}. Please email us directly at raj@yolotech88.com.`,
+            false
+          );
+        }
+      } catch (err) {
+        // Network failure / offline
+        showStatus(
+          "Network error — please check your connection or email us directly at raj@yolotech88.com.",
+          false
+        );
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalLabel;
+        }
+      }
     });
   }
 })();
