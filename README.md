@@ -37,20 +37,28 @@ Then visit http://localhost:8080
 - Interactions: sticky header, scroll-spy nav, reveal-on-scroll, animated stat counters
 - Client-side validated contact form (wire up to a backend / form service to receive messages)
 
-## Production note — Tailwind
-This build uses the **Tailwind Play CDN** for zero-config setup. For production, compile Tailwind
-to a minified stylesheet to remove the CDN runtime and shrink payload:
+## Tailwind CSS (compiled for production)
+Tailwind is **precompiled to a minified stylesheet** ([css/tailwind.min.css](css/tailwind.min.css)),
+not loaded from the CDN — smaller payload, no runtime, no console warning. The compiled file **is
+committed** so the server just needs `git pull` (no build step on the box).
+
+Theme lives in [tailwind.config.js](tailwind.config.js); the entry file is [src/input.css](src/input.css).
+
+**Whenever you add/change Tailwind classes in `index.html` or `js/main.js`, rebuild before pushing:**
 
 ```bash
-npm install -D tailwindcss
-npx tailwindcss -i ./src/input.css -o ./css/tailwind.min.css --minify
+npm install          # first time only (installs tailwindcss)
+npm run build:css    # regenerates css/tailwind.min.css (minified)
+# then commit the updated css/tailwind.min.css along with your changes
 ```
 
-Then replace the `<script src="https://cdn.tailwindcss.com">` + inline config with a link to the
-compiled `css/tailwind.min.css`. Move the custom colors/fonts from the inline `tailwind.config`
-into a `tailwind.config.js`.
+During development you can auto-rebuild on save: `npm run watch:css`.
 
-## Wiring up the contact form
-The form currently shows a success message client-side only. To receive submissions, point it at a
-backend endpoint or a service such as Formspree/Netlify Forms and handle the POST in
-`js/main.js` (`form.addEventListener("submit", …)`).
+> The config's `content` scans both `index.html` **and** `js/**/*.js`, so classes that only appear
+> in JS strings (e.g. the form's `bg-emerald-50` / `bg-red-50` status states) are not purged.
+
+## Contact form (Formspree)
+The form POSTs via `fetch` to a Formspree endpoint (see `action` on `#contact-form` in `index.html`)
+and submissions are emailed to **raj@yolotech88.com**. Success/error handling lives in
+`js/main.js`. To change the destination, update the recipient in the Formspree dashboard (or swap
+the form endpoint id).
